@@ -5,6 +5,8 @@ import asyncio
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import threading
 import yt_dlp
+import static_ffmpeg
+static_ffmpeg.add_paths()  # ဒါက ffmpeg ကို system path ထဲ အလိုအလျောက် ထည့်ပေးသွားမှာပါ
 
 intents = discord.Intents.default()
 intents.message_content = True
