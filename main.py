@@ -101,11 +101,12 @@ async def play(ctx, *, search: str):
 async def stop(ctx):
     """သီချင်းရပ်ပြီး Channel ထဲက ထွက်ရန်"""
     if ctx.voice_client:
+        if ctx.voice_client.is_playing():
+            ctx.voice_client.stop()
         await ctx.voice_client.disconnect()
         await ctx.send("🛑 သီချင်းဖွင့်ခြင်းကို ရပ်ဆိုင်းပြီး Voice Channel ထဲက ထွက်လိုက်ပါပြီ။")
     else:
         await ctx.send("❌ Bot က Voice Channel ထဲမှာ ရှိမနေပါဘူး။")
-
 # Render Web Server (Port Scan ကျော်ရန်)
 class HealthCheckHandler(BaseHTTPRequestHandler):
     def do_GET(self):
